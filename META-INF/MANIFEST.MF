@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Class-Path: commons-lang3-3.4.jar validation-api-2.0.1.Final.jar netty
+ -transport-4.1.20.Final.jar spring-boot-starter-quartz-2.0.0.BUILD-SN
+ APSHOT.jar jackson-datatype-jdk8-2.9.4.jar jackson-module-parameter-n
+ ames-2.9.4.jar lettuce-core-5.0.1.RELEASE.jar javax.annotation-api-1.
+ 3.1.jar spring-boot-starter-logging-2.0.0.BUILD-SNAPSHOT.jar log4j-to
+ -slf4j-2.10.0.jar spring-boot-starter-web-2.0.0.BUILD-SNAPSHOT.jar c3
+ p0-0.9.5.2.jar spring-boot-devtools-2.0.0.BUILD-SNAPSHOT.jar tomcat-e
+ mbed-core-8.5.27.jar netty-codec-4.1.20.Final.jar netty-buffer-4.1.20
+ .Final.jar spring-boot-starter-2.0.0.BUILD-SNAPSHOT.jar HikariCP-java
+ 6-2.3.13.jar spring-webmvc-5.0.3.RELEASE.jar logback-core-1.2.3.jar r
+ eactive-streams-1.0.2.jar quartz-2.3.0.jar spring-aop-5.0.3.RELEASE.j
+ ar jboss-logging-3.3.1.Final.jar tomcat-embed-el-8.5.27.jar tomcat-em
+ bed-websocket-8.5.27.jar spring-core-5.0.3.RELEASE.jar jackson-core-2
+ .9.4.jar jackson-datatype-jsr310-2.9.4.jar spring-boot-starter-json-2
+ .0.0.BUILD-SNAPSHOT.jar spring-web-5.0.3.RELEASE.jar spring-boot-2.0.
+ 0.BUILD-SNAPSHOT.jar mybatis-spring-boot-starter-1.3.1.jar jul-to-slf
+ 4j-1.7.25.jar mybatis-spring-1.3.1.jar mchange-commons-java-0.2.11.ja
+ r spring-boot-starter-data-redis-2.0.0.BUILD-SNAPSHOT.jar spring-jcl-
+ 5.0.3.RELEASE.jar hibernate-validator-6.0.7.Final.jar spring-beans-5.
+ 0.3.RELEASE.jar netty-common-4.1.20.Final.jar spring-expression-5.0.3
+ .RELEASE.jar jackson-annotations-2.9.0.jar mysql-connector-java-6.0.6
+ .jar HikariCP-2.7.6.jar log4j-api-2.10.0.jar classmate-1.3.4.jar spri
+ ng-jdbc-5.0.3.RELEASE.jar spring-context-support-5.0.3.RELEASE.jar sp
+ ring-data-commons-2.0.3.RELEASE.jar spring-data-keyvalue-2.0.3.RELEAS
+ E.jar jackson-databind-2.9.4.jar spring-boot-autoconfigure-2.0.0.BUIL
+ D-SNAPSHOT.jar spring-boot-starter-tomcat-2.0.0.BUILD-SNAPSHOT.jar sp
+ ring-context-5.0.3.RELEASE.jar mybatis-3.4.5.jar mybatis-spring-boot-
+ autoconfigure-1.3.1.jar netty-resolver-4.1.20.Final.jar logback-class
+ ic-1.2.3.jar spring-oxm-5.0.3.RELEASE.jar slf4j-api-1.7.25.jar snakey
+ aml-1.19.jar spring-tx-5.0.3.RELEASE.jar netty-handler-4.1.20.Final.j
+ ar spring-boot-starter-jdbc-2.0.0.BUILD-SNAPSHOT.jar reactor-core-3.1
+ .3.RELEASE.jar spring-data-redis-2.0.3.RELEASE.jar
+Main-Class: com.example.demo.DemoApplication
+
