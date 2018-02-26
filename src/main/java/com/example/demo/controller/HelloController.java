@@ -44,14 +44,6 @@ public class HelloController {
 
     }
 
-    @GetMapping(value = "/sub1")
-    public void mqttSub1() {
-        ClientMQTT client = new ClientMQTT();
-        client.setClientId("client22");
-        client.start();
-
-    }
-
     @GetMapping(value = "/pub")
     public void mqttPub() {
 

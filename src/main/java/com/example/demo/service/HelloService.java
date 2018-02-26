@@ -27,7 +27,7 @@ public class HelloService {
      * 一个列表（1,2,3），通配符。
      */
     //@Scheduled(fixedDelay = 5000)
-    @Scheduled(cron = "0 * * * * ?")
+    //@Scheduled(cron = "0 * * * * ?")
     public void schedule() {
         DateTime nowTime = new DateTime();
         System.out.println("定时任务: "+ nowTime);
