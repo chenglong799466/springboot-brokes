@@ -67,7 +67,7 @@ public class HelloController {
     }
 
     /**
-     * 实验Future模式
+     * 实验Future模式，并发编程
      */
     @GetMapping(value = "/concurrent")
     public void concurrent() throws InterruptedException, ExecutionException {
