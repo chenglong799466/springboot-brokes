@@ -3,8 +3,6 @@ package com.example.demo.filter;
 import com.example.demo.model.RespCode;
 import com.example.demo.model.RespEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
@@ -17,8 +15,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
+/**
+ * @author ChengLong
+ * @date 2018.3.2
+ */
 public class RequestFilter extends GenericFilterBean {
+
     private static final Map<String, String> API_WHITE_LIST = new HashMap<String, String>() {
         {
             put("/users", "POST");
@@ -27,6 +31,11 @@ public class RequestFilter extends GenericFilterBean {
             put("/hello", "GET");
 
         }
+    };
+
+    private static final Pattern[] API_WHITE_LIST_PATTERNS = new Pattern[]{
+            Pattern.compile("/users/[a-z]*(/.+)*"),
+            Pattern.compile("/hello/[a-z]*(/.+)*")
     };
 
     /**
@@ -43,24 +52,43 @@ public class RequestFilter extends GenericFilterBean {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
 
-        //api是否在白名单中
+        // api是否在白名单中
         String reqURI = req.getRequestURI();
         String method = req.getMethod();
-        if (API_WHITE_LIST.containsKey(reqURI) && API_WHITE_LIST.get(reqURI).equals(method)) {
-            chain.doFilter(request, response);
-            return;
-        } else {
-            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            resp.setCharacterEncoding("UTF-8");
-            resp.setHeader("Content-type", "application/json;charset=UTF-8");
-
-            RespEntity respEntity = new RespEntity();
-            respEntity.setRespCode(RespCode.UNAUTHORIZED);
-
-            ObjectMapper mapper = new ObjectMapper();
-            String respStr = mapper.writeValueAsString(respEntity);
-            PrintWriter writer = resp.getWriter();
-            writer.print(respStr);
+        for (Pattern p : API_WHITE_LIST_PATTERNS) {
+            if (p.matcher(reqURI).matches()) {
+                chain.doFilter(request, response);
+                return;
+            }
         }
+        this.sendResponse(resp);
+
     }
+
+    /**
+     * 返回鉴权失败的response
+     *
+     * @param resp
+     */
+    public void sendResponse(HttpServletResponse resp) {
+        resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        resp.setCharacterEncoding("UTF-8");
+        resp.setHeader("Content-type", "application/json;charset=UTF-8");
+
+        RespEntity respEntity = new RespEntity();
+        respEntity.setRespCode(RespCode.UNAUTHORIZED);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String respStr = null;
+        PrintWriter writer = null;
+        try {
+            respStr = mapper.writeValueAsString(respEntity);
+            writer = resp.getWriter();
+        } catch (IOException e) {
+            logger.info("Return response IOException : " + e);
+        }
+        writer.print(respStr);
+    }
+
+
 }

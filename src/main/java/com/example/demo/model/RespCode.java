@@ -29,4 +29,6 @@ public enum RespCode {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+
 }

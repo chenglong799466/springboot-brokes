@@ -15,5 +15,8 @@ public class RealData implements Callable<String> {
         //利用sleep来表示任务处理
         TimeUnit.SECONDS.sleep(5);
         return "这是处理"+Data+"结果";
+
     }
+
+
 }

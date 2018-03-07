@@ -22,8 +22,6 @@ public class ClientMQTT {
     private ScheduledExecutorService scheduler;
 
     public void start() {
-
-
         try {
             //host为主机名，clientid为连接mqtt的客户端id，一般以唯一标识符表示。memoryPersistence是设置clientid的保存形式，
             //默认为以内存保存
@@ -56,7 +54,7 @@ public class ClientMQTT {
             e.printStackTrace();
         }
 
-
     }
+
 
 }

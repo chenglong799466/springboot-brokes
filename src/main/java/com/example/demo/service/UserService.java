@@ -25,11 +25,15 @@ public class UserService {
         userMapper.insert(user);
         String userId = user.getId();
         return userId;
+
     }
 
     public String update(User user) {
         userMapper.update(user);
         String userId = user.getId();
         return userId;
+
     }
+
+    
 }

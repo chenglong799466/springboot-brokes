@@ -32,6 +32,7 @@ public class UserController {
         RespEntity respEntity = new RespEntity(RespCode.SUCCESS, list);
         logger.info("database all users : {}",respEntity.getData());
         return respEntity;
+
     }
 
     @GetMapping(value = "/one")
@@ -40,6 +41,7 @@ public class UserController {
         User user = userService.getOne(userId);
         RespEntity respEntity = new RespEntity(RespCode.SUCCESS, user);
         return respEntity;
+
     }
 
     @PostMapping(value = "/add")
@@ -50,6 +52,7 @@ public class UserController {
         String userId = userService.insert(userObj);
         RespEntity respEntity = new RespEntity(RespCode.SUCCESS, userService.getOne(userId));
         return respEntity;
+
     }
 
     @PostMapping(value = "/update")
@@ -78,6 +81,8 @@ public class UserController {
         respEntity.setData(userObj);
         respEntity.setRespCode(RespCode.SUCCESS);
         return respEntity;
+
     }
+
 
 }

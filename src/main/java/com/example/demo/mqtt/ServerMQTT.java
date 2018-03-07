@@ -29,6 +29,7 @@ public class ServerMQTT {
         // MemoryPersistence设置clientid的保存形式，默认为以内存保存
         client = new MqttClient(HOST, clientId, new MemoryPersistence());
         connect();
+
     }
 
     private void connect(){
@@ -51,6 +52,7 @@ public class ServerMQTT {
         } catch (MqttException e) {
             e.printStackTrace();
         }
+
     }
 
     public void pulish(MqttTopic topic,MqttMessage message) throws MqttException {
@@ -59,4 +61,6 @@ public class ServerMQTT {
         System.out.println("message is published completely! " + token.isComplete());
 
     }
+
+
 }

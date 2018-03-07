@@ -1,18 +1,19 @@
 package com.example.demo.controller;
 
 import com.example.demo.concurrent.RealData;
-import com.example.demo.model.HelloWorld;
 import com.example.demo.mqtt.ClientMQTT;
 import com.example.demo.mqtt.ServerMQTT;
 import com.example.demo.service.HelloService;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sun.plugin.javascript.navig.Array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
@@ -20,20 +21,29 @@ import java.util.concurrent.*;
 @RestController
 @RequestMapping("/hello")
 public class HelloController {
-
-    @Autowired
-    private HelloWorld helloWorld;
-
     @Autowired
     private HelloService helloService;
 
-    @GetMapping(value = "/1")
-    public HelloWorld hello() {
-        List<HelloWorld> list = helloService.helloWorlds(helloWorld);
-        for (HelloWorld h : list) {
-            return h;
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
+
+    @GetMapping
+    public void hello() {
+        List<String> driverlist = Arrays.asList("driver1","driver2","driver3","driver4");
+        List<String> requestlist = new ArrayList<>();
+        List<String> triplist = new ArrayList<>();
+        for (int i = 0; i < 11; i++) {
+            requestlist.add("request"+i);
         }
-        return null;
+        int size = driverlist.size();
+        for (int i = 0; i < size; i++) {
+            for (int j = i; j < requestlist.size(); j += driverlist.size()) {
+                triplist.add("trip"+j);
+                logger.info("triplist add " + j);
+            }
+            
+        }
+
     }
 
     @GetMapping(value = "/sub")
@@ -87,6 +97,7 @@ public class HelloController {
         Long useTime = end - start;
 
         System.out.println("程序运行了-->" + useTime + "毫秒");
+
     }
 
     /**

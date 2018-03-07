@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.model.HelloWorld;
+
+import com.example.demo.model.World;
 import org.joda.time.DateTime;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,13 +11,8 @@ import java.util.List;
 @Service
 public class HelloService {
 
-    public List<HelloWorld> helloWorlds(HelloWorld helloWorld) {
-        helloWorld.setChina("111");
-        helloWorld.setUSA("222");
-        List<HelloWorld> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            list.add(helloWorld);
-        }
+    public List<World> helloWorlds() {
+        List<World> list = new ArrayList<>();
         return list;
     }
 
@@ -32,5 +27,6 @@ public class HelloService {
         DateTime nowTime = new DateTime();
         System.out.println("定时任务: "+ nowTime);
     }
+
 
 }
