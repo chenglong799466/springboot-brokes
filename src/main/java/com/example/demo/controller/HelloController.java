@@ -9,6 +9,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,24 +25,38 @@ public class HelloController {
     @Autowired
     private HelloService helloService;
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    @Value("${number.url}")
+    private String url;
 
+    private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     @GetMapping
     public void hello() {
-        List<String> driverlist = Arrays.asList("driver1","driver2","driver3","driver4");
+        // 测试多环境配置文件
+        logger.info("application-dev.yml : {}", url);
+
+        // 测试全局异常捕捉
+        //int i = 1 / 0;
+    }
+
+    /**
+     * 派单问题逻辑实现
+     */
+    @GetMapping(value = "/dispatch")
+    public void dispatch() {
+        List<String> driverlist = Arrays.asList("driver1", "driver2", "driver3", "driver4");
         List<String> requestlist = new ArrayList<>();
         List<String> triplist = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
-            requestlist.add("request"+i);
+            requestlist.add("request" + i);
         }
         int size = driverlist.size();
         for (int i = 0; i < size; i++) {
             for (int j = i; j < requestlist.size(); j += driverlist.size()) {
-                triplist.add("trip"+j);
+                triplist.add("trip" + j);
                 logger.info("triplist add " + j);
             }
-            
+
         }
 
     }
@@ -106,7 +121,7 @@ public class HelloController {
     @GetMapping(value = "/stream")
     public void stream() {
         // java 8之后
-        List features = Arrays.asList("Lambdas","Default Method","Stream API","Date and Time API");
+        List features = Arrays.asList("Lambdas", "Default Method", "Stream API", "Date and Time API");
         features.stream().forEach(n -> System.out.println(n));
         // 等价于
         features.forEach(System.out::println);
@@ -115,9 +130,9 @@ public class HelloController {
         List languages = Arrays.asList("Java", "Scala", "C++", "Haskell", "Lisp");
 
         // lambda表达式不能对定义在域外的变量进行修改
-        List<Integer> primes = Arrays.asList(new Integer[]{2, 3,5,7});
+        List<Integer> primes = Arrays.asList(new Integer[]{2, 3, 5, 7});
         int factor = 1;
-        primes.forEach(e ->{
+        primes.forEach(e -> {
             System.out.println(factor);
         });
 

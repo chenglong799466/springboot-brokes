@@ -6,3 +6,12 @@ spring:
     username: root
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver
+
+  profiles:
+    active: dev
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss:SSS,GMT+8} - %5p ${PID:- } --- [%15.15t] %-40.40logger{39} :%3L: %m%n:-%wEx"
