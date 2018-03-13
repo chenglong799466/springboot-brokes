@@ -54,7 +54,7 @@ public class HelloController {
         for (int i = 0; i < size; i++) {
             for (int j = i; j < requestlist.size(); j += driverlist.size()) {
                 triplist.add("trip" + j);
-                logger.info("triplist add " + j);
+                logger.info("triplist add " + triplist.get(j));
             }
 
         }
@@ -71,23 +71,19 @@ public class HelloController {
 
     @GetMapping(value = "/pub")
     public void mqttPub() {
-
-        ServerMQTT server = null;
         try {
-            server = new ServerMQTT();
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
-        server.mqttMessage = new MqttMessage();
-        server.mqttMessage.setQos(1);
-        server.mqttMessage.setRetained(false);
-        server.mqttMessage.setPayload("hello,topic122".getBytes());
-        try {
+            ServerMQTT server = new ServerMQTT();
+            if (server != null) {
+                server.mqttMessage = new MqttMessage();
+                server.mqttMessage.setQos(1);
+                server.mqttMessage.setRetained(false);
+                server.mqttMessage.setPayload("hello,topic122".getBytes());
+            }
             server.pulish(server.getTopic11(), server.getMqttMessage());
+            System.out.println(server.mqttMessage.isRetained() + "------ratained状态");
         } catch (MqttException e) {
-            e.printStackTrace();
+            logger.error("mqtt pub failed : {}", e.getMessage());
         }
-        System.out.println(server.mqttMessage.isRetained() + "------ratained状态");
 
     }
 
