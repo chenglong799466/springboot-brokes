@@ -51,6 +51,7 @@ public class UserController {
         userObj.setNickName(user.get("nick_name"));
         String userId = userService.insert(userObj);
         RespEntity respEntity = new RespEntity(RespCode.SUCCESS, userService.getOne(userId));
+        logger.info("Add a new user :"+userId);
         return respEntity;
 
     }

@@ -36,7 +36,8 @@ public class RequestFilter extends GenericFilterBean {
     private static final Pattern[] API_WHITE_LIST_PATTERNS = new Pattern[]{
             Pattern.compile("/users/[a-z]*(/.+)*"),
             Pattern.compile("/hello/[a-z]*(/.+)*"),
-            Pattern.compile("/druid/.*")
+            Pattern.compile("/druid/.*"),
+            Pattern.compile("/seckill/.*")
 
     };
 

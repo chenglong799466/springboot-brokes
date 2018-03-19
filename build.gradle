@@ -38,9 +38,11 @@ dependencies {
             'org.apache.commons:commons-lang3:3.4',
             'joda-time:joda-time:2.9.4',
             'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2',
-            'org.slf4j:slf4j-log4j12:1.7.5 ',
-            'com.google.guava:guava',
-            'com.alibaba:druid:1.0.20'
+            'com.google.guava:guava:24.1-jre',
+            'com.alibaba:druid:1.1.8',
+            'tk.mybatis:mapper-spring-boot-starter:1.2.4', //<!--mapper-->
+            'com.github.pagehelper:pagehelper-spring-boot-starter:1.2.3', //<!--pagehelper-->
+            //'org.springframework.boot:spring-boot-starter-data-redis'
              )
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')

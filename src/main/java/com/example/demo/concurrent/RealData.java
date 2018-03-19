@@ -3,6 +3,10 @@ package com.example.demo.concurrent;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author chenglong
+ * @date 2018.3.19
+ */
 public class RealData implements Callable<String> {
     private String Data;
 

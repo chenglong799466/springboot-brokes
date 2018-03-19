@@ -4,13 +4,14 @@ package com.example.demo.service;
 import com.example.demo.model.World;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class HelloService {
-
+    @Transactional
     public List<World> helloWorlds() {
         List<World> list = new ArrayList<>();
         return list;
