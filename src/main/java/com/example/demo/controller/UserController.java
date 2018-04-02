@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +24,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private StringRedisTemplate redis;
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -82,6 +86,20 @@ public class UserController {
         respEntity.setData(userObj);
         respEntity.setRespCode(RespCode.SUCCESS);
         return respEntity;
+
+    }
+
+    @RequestMapping(value = "/redis")
+    public RespEntity getFromRedis(@RequestParam(value = "uuid") String userId){
+        String key = "userId"+ userId;
+        if (redis.opsForValue().get(key) == null){
+           User user = userService.getOne(userId);
+           redis.opsForValue().set(key,user.toString());
+           return new RespEntity(RespCode.SUCCESS,user);
+        }else {
+            String userStr = redis.opsForValue().get(key);
+            return new  RespEntity(RespCode.SUCCESS,userStr);
+        }
 
     }
 

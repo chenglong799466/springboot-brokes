@@ -21,7 +21,7 @@ public class RespEntity {
         this.data = data;
     }
 
-    //初始化RespCode
+    // 初始化RespCode
     public void setRespCode(RespCode respCode){
         this.code = respCode.getCode();
         this.msg = respCode.getMsg();

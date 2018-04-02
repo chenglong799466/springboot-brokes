@@ -42,7 +42,7 @@ dependencies {
             'com.alibaba:druid:1.1.8',
             'tk.mybatis:mapper-spring-boot-starter:1.2.4', //<!--mapper-->
             'com.github.pagehelper:pagehelper-spring-boot-starter:1.2.3', //<!--pagehelper-->
-            //'org.springframework.boot:spring-boot-starter-data-redis'
+            'org.springframework.boot:spring-boot-starter-data-redis'
              )
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')

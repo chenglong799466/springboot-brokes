@@ -1,12 +1,15 @@
 package com.example.demo.model;
 
+import lombok.Builder;
 import lombok.Data;
+import org.joda.time.DateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.util.Date;
 
 @Data
+@Builder
 public class Seckill {
     /**
      * 商品库存ID

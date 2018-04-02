@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.SeckillMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.Seckill">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="seckill_id" jdbcType="BIGINT" property="seckillId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" typeHandler="DateTimeTypeHandler" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" typeHandler="DateTimeTypeHandler" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" typeHandler="DateTimeTypeHandler" />
+  </resultMap>
+
+  <insert id="add">
+    insert into seckill(name,number) values(#{name},#{number})
+  </insert>
+</mapper>
