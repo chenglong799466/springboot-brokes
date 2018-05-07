@@ -76,6 +76,7 @@ public class UserController {
 
         respEntity.setData(userObj);
         respEntity.setRespCode(RespCode.SUCCESS);
+        respEntity.getMsg();
         return respEntity;
     }
 
