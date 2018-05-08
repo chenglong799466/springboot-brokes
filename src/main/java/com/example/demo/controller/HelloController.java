@@ -70,6 +70,9 @@ public class HelloController {
         } catch (MqttException e) {
             e.printStackTrace();
         }
+
+
+
         System.out.println(server.mqttMessage.isRetained() + "------ratained状态");
 
     }
